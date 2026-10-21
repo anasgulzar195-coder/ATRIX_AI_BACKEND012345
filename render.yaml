@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: atrix-ai-backend
+    runtime: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn atrix_backend.server:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: TOKEN_SECRET
+        generateValue: true
+      - key: ADMIN_API_KEY
+        sync: false
+      - key: DATABASE_URL
+        sync: false
+      - key: CORS_ORIGINS
+        sync: false
